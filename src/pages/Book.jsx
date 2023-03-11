@@ -45,13 +45,13 @@ const Book = () => {
 
                     <div className="row">
                         <div className="col-3 text-center">
-                            <img className="img-thumbnail" src={book.imageURL} /> 
+                            <img className="img-thumbnail" src={book.imageURL} />
                             <Link className='hover:underline text-2xl font-bold' to={`/books`}>Back to Listing</Link>
                         </div>
 
                         {/* Content */}
                         <div className="col-9 w-100">
-                            
+
                             <div className="row-12 align-items-start pb-6">
                                 <div className="col align-items-left">
                                     <p className="font-bold display-4"> {book.title} </p>
@@ -60,7 +60,7 @@ const Book = () => {
                             </div>
 
                             <div className="row py-3">
-                                
+
                                 <div className="col-3">
                                     <div class="card text-center">
                                         <div className="card-header font-bold text-xl">
@@ -72,7 +72,7 @@ const Book = () => {
                                             </h3>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div className="col-3">
                                     <div class="card text-center">
@@ -85,7 +85,7 @@ const Book = () => {
                                             </h3>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div className="col-3">
                                     <div class="card text-center">
@@ -98,7 +98,7 @@ const Book = () => {
                                             </h3>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div className="col-3">
                                     <div class="card text-center">
@@ -114,33 +114,28 @@ const Book = () => {
                                 </div>
 
                             </div>
+
+                            <div className="row pt-2">
+                                <div className="col-2 px-3 mx-2">
+                                    <a href="" className="btn btn-primary btn-lg p-3">
+                                        <h2 className='text-3xl font-bold'>Buy</h2>
+                                    </a>
+                                </div> 
+
+                                <div className="col-2 px-3 mx-2">
+                                    <a href="" className="btn btn-secondary btn-lg p-3">
+                                        <h2 className='text-3xl font-bold'>Borrow</h2>
+                                    </a>
+                                </div>
+
+                                
+                            </div>
                         </div>
-
-
-
 
                     </div>
 
 
-
-
-
                 </div>
-
-
-
-
-
-
-
-
-                <div>
-                    
-                </div>
-
-
-
-
 
             </>
         }

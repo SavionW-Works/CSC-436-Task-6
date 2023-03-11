@@ -18,8 +18,8 @@ const Books = () => {
             const request = await fetch(url);
             const response = await request.json();
             setBooks(response);
-           
-        } catch(e) {
+
+        } catch (e) {
             setError('Error: ' + e.message);
         } finally {
             setLoading(false);
@@ -32,19 +32,39 @@ const Books = () => {
 
 
     return <>
-        {error && <ErrorAlert>{error}</ErrorAlert>}
-        {!error && loading && <div className="max-w-[230px]"><Skeleton count="10" /></div>}
-        {!error && !loading && 
-            <>
-            {books.map(book => {
-                return <div key={book.id}>
-                    <Link className='hover:underline' to={`/books/${book.id}`}>{book.title}</Link>
-                </div>
-            })}
-            </>
-        }
 
-    
+        <div className="container">
+            <div className="text-center">
+                <h1 className='text-2xl font-bold'>Current Selection</h1>
+            </div>
+
+            {error && <ErrorAlert>{error}</ErrorAlert>}
+            {!error && loading && <div className="max-w-[230px]"><Skeleton count="10" /></div>}
+
+            <div className="row">
+                {!error && !loading &&
+                    <>
+                        {books.map(book => {
+                            return <>
+                                <div className="col-sm-6 col-lg-3 col-xl-2  d-inline px-3 py-3" key={book.id}>
+                                    <Link className='hover:underline' to={`/books/${book.id}`}>
+                                        <div className="card" styles="width: 18rem;">
+                                            <img src={book.imageURL} className="card-img-top img-thumbnail" />
+                                            <div className="card-body text-center">
+                                                {book.title}
+                                            </div>
+                                        </div>
+                                    </Link>
+
+                                </div>
+                            </>
+                        })}
+                    </>
+                }
+            </div>
+
+
+        </div>
     </>
 }
 
