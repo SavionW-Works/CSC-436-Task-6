@@ -19,15 +19,9 @@ return <>
             <Route path="/books/:id" element={<Book />}></Route>
             <Route path="/books" element={<Books />}></Route>
             <Route path="*" element={<NotFound />}></Route>
-
         </Routes>
     </Container>
     <Footer />
-
-    
-
-
-
 </>
   
 }

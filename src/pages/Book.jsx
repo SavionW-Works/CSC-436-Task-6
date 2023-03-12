@@ -37,6 +37,7 @@ const Book = () => {
 
     return <>
         {error && <ErrorAlert>{error}</ErrorAlert>}
+        {!error && loading && <p className='text-2xl font-bold text-center'>Loading...</p>}
         {!error && !loading &&
             <>
 
