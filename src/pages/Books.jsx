@@ -11,21 +11,17 @@ const Books = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [search, setSearch] = useState("");
+    const [showAll, setShowAll] = useState(true)
 
     const searchHandler = (e) => {
+
+        setShowAll(false);
+
         
-        if (!e.target.value) {
-            setSearch(" ")
-        }
-       
         setSearch(e.target.value); {/*setSearch is passed in as a prop */ }
         console.log(search)
-        setBooks(bookData.filter(book => {
-            //Title Filter
-            return (book.title.toUpperCase().includes(search.toUpperCase())); 
+        
 
-        }));
-       
     }
 
     const getData = async () => {
@@ -35,7 +31,7 @@ const Books = () => {
         try {
             const request = await fetch(url);
             const response = await request.json();
-            setBookData(response); 
+            setBookData(response);
             //setTempBooks(response);
 
         } catch (e) {
@@ -48,30 +44,50 @@ const Books = () => {
     useEffect(() => {
         getData();
         
+        console.log(showAll)
+        
+        if (showAll == false) {
+            setBooks(bookData.filter(book => {
+                //Title Filter
+                return (book.title.toUpperCase().includes(search.toUpperCase()));
+    
+            }));
+        } 
 
-    }, [search]);
+        
 
+    }, [search, showAll]);
+
+    
     
 
     return <>
-
+        
         <div className="container">
             <div className="text-center">
                 <h1 className='text-5xl font-bold'>Current Selection</h1>
             </div>
 
-            {error && <ErrorAlert>{error}</ErrorAlert>} 
+            {error && <ErrorAlert>{error}</ErrorAlert>}
             {!error && <div className="row gap-5 text-center">
+                
                 <label htmlFor="search" className='text-2xl text-bold'> Search: </label>
+
                 {/*Whenever the user types (found with a change in the input box), run searchHanlder */}
-                <input type="text" name="search" onChange={searchHandler} value={search} /> 
+                <input type="text" className="border border-dark" name="search" onChange={searchHandler} value={search} /> 
+                <button className='btn btn-primary' onClick={()=> (setBooks(bookData), setSearch(""))}> 
+                    Show All Books
+                </button>
+               
+
+
                 {/* <a href="" className="btn btn-secondary btn-lg p-3" onClick={() => setSearch("")}>
                      <h2 className='text-3xl font-bold'>Reset Listing</h2>
                 </a> */}
             </div>}
             {!error && loading && <div className="max-w-[230px]"><Skeleton count="10" /></div>}
 
-            
+
 
 
             <div className="row">
@@ -93,7 +109,8 @@ const Books = () => {
                             </>
                         })}
                     </>
-                }
+                } 
+
             </div>
 
 
