@@ -44,9 +44,9 @@ const Books = () => {
     useEffect(() => {
         getData();
         
-        setBooks(bookData)
+        //setBooks(bookData);
         
-        console.log(showAll)
+        //console.log(showAll)
         
         if (showAll == false) {
             setBooks(bookData.filter(book => {
@@ -58,7 +58,13 @@ const Books = () => {
 
         
 
-    }, [search, showAll]);
+    }, [search, showAll]); 
+
+    useEffect(() => {
+        if (showAll) {
+            setBooks(bookData);
+        }
+    })
 
     
     
