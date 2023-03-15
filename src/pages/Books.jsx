@@ -44,6 +44,8 @@ const Books = () => {
     useEffect(() => {
         getData();
         
+        setBooks(bookData)
+        
         console.log(showAll)
         
         if (showAll == false) {
